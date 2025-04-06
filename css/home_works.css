@@ -43,7 +43,7 @@
 
 .parent_block {
     height: 500px;
-    width: 500px;
+    width: 700px;
     border: 1px solid var(--orange);
     position: relative;
     margin: 0 auto;
