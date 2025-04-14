@@ -91,3 +91,46 @@ resetBtn.onclick = () => {
     count = 0
     newInterval();
 }
+
+
+// CHARACTERS
+const xhr = new XMLHttpRequest();
+
+xhr.open('GET', '../data/characters.json');
+xhr.setRequestHeader('Content-type', 'application/json');
+xhr.send();
+
+xhr.onload = () => {
+    const data = JSON.parse(xhr.response);
+    console.log(data);
+
+    const container = document.querySelector('.characters-list');
+    const defaultPhoto = 'default.jpg';
+
+
+    data.forEach((person) => {
+        const personBlock = document.createElement('div');
+        personBlock.classList.add('character-card');
+        personBlock.innerHTML = `
+        <div class="character-photo">
+        <img src="${person.photo || defaultPhoto}" alt="photo">
+        </div>
+        <h3>${person.name}</h3>
+        <p><i>Описание: </i>${person.description}</p>
+        `;
+
+        container.appendChild(personBlock);
+    });
+};
+
+// 2
+
+const xhr2 = new XMLHttpRequest();
+xhr2.open("GET", "../data/any.json");
+
+xhr2.onload = () => {
+        const data = JSON.parse(xhr2.response);
+        console.log(data);
+};
+
+xhr2.send();

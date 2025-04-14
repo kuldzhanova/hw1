@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Mickey Mouse",
+    "description": "Весёлый мышонок с большим сердцем и символ Disney",
+    "photo": "../images/Mickey_Mouse.webp"
+  },
+  {
+    "name": "Donald Duck",
+    "description": "Упрямый, но очень харизматичный утёнок.",
+    "photo": "../images/Donald_Duck.webp"
+  },
+  {
+    "name": "Minnie Mouse",
+    "description": "Добрый и немного неуклюжий пёс, всегда готов помочь.",
+    "photo": "../images/Minnie_Mouse.webp"
+  },
+    {
+      "name": "Simba",
+      "description": "Молодой львенок, который становится королем, следуя своему предназначению.",
+      "photo": "../images/Simba.jpeg"
+    },
+    {
+      "name": "Elsa",
+      "description": "Королева Эльса, обладающая магическими силами, способными контролировать лед и снег.",
+      "photo": "../images/elsa.webp"
+    },
+    {
+      "name": "Buzz Lightyear",
+      "description": "Отважный космический рейнджер, готовый сражаться за справедливость.",
+      "photo": "../images/Buzz_Lightyear.webp"
+    },
+    {
+      "name": "Woody",
+      "description": "Лидер игрушек в мире, преданный друг и защитник, всегда заботится о своих друзьях.",
+      "photo": "../images/Woody.webp"
+    },
+    {
+      "name": "Ariel",
+      "description": "Молодая русалка, которая мечтает стать частью человеческого мира.",
+      "photo": "../images/Ariel.webp"
+    }
+  ]
+
