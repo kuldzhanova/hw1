@@ -61,3 +61,81 @@ const convertor = (element, targetElement) => {
 convertor(somInput, usdInput);
 convertor(usdInput, somInput);
 convertor(euroInput, somInput);
+
+// tab slider
+const TabBlocks = document.querySelectorAll('.tab_content_block')
+const ItemBlocks = document.querySelectorAll('.tab_content_item')
+const button = document.querySelector('.tab_content_items')
+const hideFunction = () => {
+    TabBlocks.forEach(item => {
+    item.style.display = 'none';
+    })
+    ItemBlocks.forEach(item => {
+        item.classList.remove('tab_content_item_active');
+    })
+};
+
+const showFunction = (index = 0) => {
+    TabBlocks[index].style.display = 'block';
+    ItemBlocks[index].classList.add('tab_content_item_active');
+}
+hideFunction()
+showFunction()
+
+button.onclick = (event) => {
+    if (event.target.classList.contains('tab_content_item')) {
+        ItemBlocks.forEach((item, index) => {
+            if (event.target === item) {
+                hideFunction();
+                showFunction(index);
+            }
+        });
+    }
+};
+
+let currentIndex = 0;
+let autoPlayInterval;
+const itemCount = ItemBlocks.length;
+
+function Slide(index) {
+    if (index < 0) {
+        index = itemCount - 1;
+    } else if (index >= itemCount) {
+        index = 0;
+    }
+    hideFunction();
+    showFunction(index);
+    currentIndex = index;
+}
+
+function startAutoPlay() {
+    autoPlayInterval = setInterval(() => {
+        Slide(currentIndex + 1);
+    }, 5000);
+}
+
+function stopAutoPlay() {
+    clearInterval(autoPlayInterval);
+}
+
+startAutoPlay();
+
+// card switcher
+const btnNext = document.querySelector("#btn-next");
+const btnPrev = document.querySelector("#btn-prev");
+const cardBlock = document.querySelector(".card");
+
+let cardId = 0
+btnNext.onclick = () => {
+    cardId++;
+    fetch(`https://Jsonplaceholder.typicode.com/todos/${cardId}`)
+        .then(res => res.json())
+        .then((data => {
+            cardBlock.innerHTML = `
+            <p>${data.title}</p>
+            <p style="color:${data.completed ? 'green' :  'red'}">${data.completed}</p>
+            <span>${data.id}</span>
+            `;
+        })
+        )}
+
