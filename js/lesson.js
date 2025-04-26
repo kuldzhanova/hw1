@@ -125,17 +125,42 @@ const btnNext = document.querySelector("#btn-next");
 const btnPrev = document.querySelector("#btn-prev");
 const cardBlock = document.querySelector(".card");
 
-let cardId = 0
-btnNext.onclick = () => {
-    cardId++;
-    fetch(`https://Jsonplaceholder.typicode.com/todos/${cardId}`)
-        .then(res => res.json())
-        .then((data => {
-            cardBlock.innerHTML = `
-            <p>${data.title}</p>
-            <p style="color:${data.completed ? 'green' :  'red'}">${data.completed}</p>
-            <span>${data.id}</span>
-            `;
-        })
-        )}
+let cardId = 1;
 
+const Card = () => {
+    fetch(`https://jsonplaceholder.typicode.com/todos/${cardId}`)
+        .then((res) => res.json())
+        .then((data) => {
+            cardBlock.innerHTML = `
+        <p>${data.title}</p>
+        <p style="color:${data.completed ? 'green' : 'red'}">${data.completed}</p>
+        <span>${data.id}</span>
+      `;
+        })
+        .catch((err) => {
+            cardBlock.innerHTML = `<p>Ошибка: ${err.message}</p>`;
+        });
+};
+
+btnNext.onclick = () => {
+    cardId = cardId === 200 ? 1 : cardId + 1;
+    Card(cardId);
+};
+
+
+btnPrev.onclick = () => {
+    cardId = cardId === 1 ? 200 : cardId - 1;
+    Card(cardId);
+};
+
+Card(cardId);
+
+// 2
+fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(res => res.json())
+    .then(posts => {
+        console.log( posts);
+    })
+    .catch(err => {
+        console.error('Ошибка:', err);
+    });
